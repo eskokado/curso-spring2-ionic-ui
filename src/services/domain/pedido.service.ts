@@ -10,6 +10,7 @@ export class PedidoService {
     }
 
     insert(obj: PedidoDTO) {
+        console.log(obj);
         return this.http.post(
             `${API_CONFIG.baseUrl}/pedidos`,
             obj,
