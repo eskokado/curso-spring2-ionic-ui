@@ -58,3 +58,5 @@ export class ClienteService {
         ); 
     }
 }
+
+//https://blog.wgbn.com.br/acessando-a-c%C3%A2mera-do-celular-com-ionic-e-cordova-d775e9ab65a7
