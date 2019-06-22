@@ -19,14 +19,6 @@ export class ProfilePage {
   image: any = null;
   cameraOn: boolean = false;
 
-  private options: CameraOptions = {
-    quality: 100,
-    destinationType: this.camera.DestinationType.DATA_URL,
-    encodingType: this.camera.EncodingType.PNG,
-    mediaType: this.camera.MediaType.PICTURE
-  }
-
-
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -73,8 +65,40 @@ export class ProfilePage {
   getCameraPicture() {
 
     this.cameraOn = true;
+    
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.PNG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+  
+    this.camera.getPicture(options).then((imageData) => {
+     this.picture = 'data:image/png;base64,' + imageData;
+     //this.image = this.sn.bypassSecurityTrustResourceUrl(this.picture);
+     this.cameraOn = false;
+    }, (error) => {
+      console.log('erro camera : ' + error);
+      this.cameraOn = false;
+    })
+    .catch(error => {
+      console.log('erro catch : ' + error);
+    });
+  }
 
-    this.camera.getPicture(this.options).then((imageData) => {
+  getGalleryPicture() {
+
+    this.cameraOn = true;
+    
+    const options: CameraOptions = {
+      quality: 100,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.PNG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+  
+    this.camera.getPicture(options).then((imageData) => {
      this.picture = 'data:image/png;base64,' + imageData;
      //this.image = this.sn.bypassSecurityTrustResourceUrl(this.picture);
      this.cameraOn = false;
