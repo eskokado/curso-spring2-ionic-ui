@@ -79,10 +79,12 @@ export class ProfilePage {
      this.cameraOn = false;
     }, (error) => {
       console.log('erro camera : ' + error);
+      
       this.cameraOn = false;
     })
     .catch(error => {
       console.log('erro catch : ' + error);
+      this.cameraOn = false;
     });
   }
 
@@ -104,10 +106,12 @@ export class ProfilePage {
      this.cameraOn = false;
     }, (error) => {
       console.log('erro camera : ' + error);
-      this.cameraOn = false;
+
+      this.cameraOn = false;    
     })
     .catch(error => {
       console.log('erro catch : ' + error);
+      this.cameraOn = false;
     });
   }
 
